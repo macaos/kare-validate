@@ -1,0 +1,29 @@
+{
+  "name": "kare-validate",
+  "version": "0.0.1",
+  "description": "UI, React form validation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://macaos@github.com/macaos/kare-validate.git"
+  },
+  "keywords": [
+    "validation",
+    "validate",
+    "react-validate",
+    "ui-validate",
+    "validate-core"
+  ],
+  "author": "macaos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/macaos/kare-validate/issues"
+  },
+  "homepage": "https://github.com/macaos/kare-validate#readme",
+  "dependencies": {
+    "pluralize": "^8.0.0"
+  }
+}
