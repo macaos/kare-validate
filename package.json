@@ -4,7 +4,8 @@
   "description": "UI, React form validation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,10 @@
   "homepage": "https://github.com/macaos/kare-validate#readme",
   "dependencies": {
     "pluralize": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/pluralize": "0.0.29",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1"
   }
 }
