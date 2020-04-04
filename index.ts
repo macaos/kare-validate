@@ -6,16 +6,17 @@
 
 type TRuleVal = string | boolean | number;
 
-export type TCheckResult = {
+type TCheckResult = {
   result: boolean;
   info: { [s: string]: any };
   messages: { [s: string]: string };
   messagesArr: string[];
 };
 
-export type TMessages = { [s: string]: string };
+type TMessages = { [s: string]: string };
 
 export class KareValidate {
+  constructor() {}
   /**
    * Validation Check
    * @param value Verification value
