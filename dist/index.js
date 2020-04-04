@@ -1,7 +1,15 @@
 "use strict";
+// import * as pluralize from "pluralize";
 Object.defineProperty(exports, "__esModule", { value: true });
-var pluralize = require("pluralize");
-function getPlural(str) {
-    return pluralize.plural(str);
+class KareValidate {
+    check(value, rules, messages) {
+        const returnValue = {
+            result: true,
+            info: Object.assign({}, rules),
+            messages: Object.assign({}, rules),
+            messagesArr: []
+        };
+        return returnValue;
+    }
 }
-exports.getPlural = getPlural;
+exports.KareValidate = KareValidate;
