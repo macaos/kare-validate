@@ -29,11 +29,36 @@ export class KareValidate {
     messages?: TMessages
   ): TCheckResult {
     const returnValue: TCheckResult = {
-      result: true,
+      result: false,
       info: Object.assign({}, rules),
       messages: Object.assign({}, rules),
       messagesArr: []
     };
+
+    let allCheck: boolean = true;
+
+    for (let i in rules) {
+      const ruleName: string = i;
+      const ruleValue: any = rules[i];
+      const func: any = this.rules[ruleName];
+      if (func) {
+        const check = func(value, ruleValue);
+        if (allCheck) allCheck = check;
+        const getMessage = this.getMessage(
+          check,
+          value,
+          ruleName,
+          ruleValue,
+          messages
+        );
+        returnValue.info[ruleName] = check;
+        returnValue.messages[ruleName] = getMessage;
+        if (getMessage !== "") returnValue.messagesArr.push(getMessage);
+      } else {
+        // There are no rules.
+      }
+    }
+    returnValue.result = allCheck;
 
     return returnValue;
   }
@@ -47,6 +72,16 @@ export class KareValidate {
     min: () => {},
     max: () => {}
   };
+
+  getMessage(
+    check: boolean,
+    value: any,
+    ruleName: string,
+    ruleValue: TRuleVal,
+    inMessages?: TMessages
+  ): string {
+    return "";
+  }
 
   /** ************************************************
    * utils

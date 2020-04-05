@@ -29,6 +29,7 @@ export declare class KareValidate {
     rules: {
         [key: string]: (val: any, ruleVal: TRuleVal) => void;
     };
+    getMessage(check: boolean, value: any, ruleName: string, ruleValue: TRuleVal, inMessages?: TMessages): string;
     /** ************************************************
      * utils
      */

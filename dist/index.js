@@ -19,12 +19,35 @@ class KareValidate {
      */
     check(value, rules, messages) {
         const returnValue = {
-            result: true,
+            result: false,
             info: Object.assign({}, rules),
             messages: Object.assign({}, rules),
             messagesArr: []
         };
+        let allCheck = true;
+        for (let i in rules) {
+            const ruleName = i;
+            const ruleValue = rules[i];
+            const func = this.rules[ruleName];
+            if (func) {
+                const check = func(value, ruleValue);
+                if (allCheck)
+                    allCheck = check;
+                const getMessage = this.getMessage(check, value, ruleName, ruleValue, messages);
+                returnValue.info[ruleName] = check;
+                returnValue.messages[ruleName] = getMessage;
+                if (getMessage !== "")
+                    returnValue.messagesArr.push(getMessage);
+            }
+            else {
+                // There are no rules.
+            }
+        }
+        returnValue.result = allCheck;
         return returnValue;
+    }
+    getMessage(check, value, ruleName, ruleValue, inMessages) {
+        return "";
     }
     /** ************************************************
      * utils
